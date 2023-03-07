@@ -36,8 +36,8 @@ public class BootstrapData implements CommandLineRunner {
         Book dddSaved = bookRepository.save(ddd);
 
         Author luma = new Author();
-        puma.setFirstName("luma");
-        puma.setLastName("Rick");
+        luma.setFirstName("luma");
+        luma.setLastName("Rick");
 
         Book spring = new Book();
         spring.setTitle("Spring Learn");
@@ -45,6 +45,11 @@ public class BootstrapData implements CommandLineRunner {
 
         Author lumaSaved = authorRepository.save(luma);
         Book springSaved = bookRepository.save(spring);
+
+        pumaSaved.getBooks().add(dddSaved);
+        lumaSaved.getBooks().add(springSaved);
+        dddSaved.getAuthors().add(pumaSaved);
+        springSaved.getAuthors().add(lumaSaved);
 
         Publisher publisher = new Publisher();
         publisher.setPublisherName("My Publisher");
